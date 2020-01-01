@@ -12,7 +12,7 @@
     <body>
 
         <div class="container" id="main">
-        <h1><a href="{{ url_for('index') }}">Pastebin [Vulnerable Web Application]</a></h1>
+        <h1><a href="{{ url_for('index') }}">Pastebin</a></h1>
         <div class="container" id="content" style="margin-top: 5%;">
 
         <h2>Submit paste</h2>
@@ -39,7 +39,7 @@
         <h2>Paste</h2>
         {% for element in paste %}
         <p>Id: {{ element[0] }} | Private: {{ element[2] }} | Made by: {{ element[3] }}</p>
-        <p>{{ element[1]|safe }}</p>
+        <p>{{ element[1] }}</p>
         {% endfor %}
         </div>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

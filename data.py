@@ -1,21 +1,19 @@
-from flask import Flask, current_app, g
+from flask import Flask, g, current_app
 import sqlite3
 
 DATABASE = 'database.db'
 
-def init_db(): #create db schema to schema.sql
-    with current_app.app_context():
-        db = get_db()
-        with current_app.open_resource('schema.sql', mode='r') as f: 
-            db.cursor().executescript(f.read())
-        db.commit()
-
-def get_db(): 
+def get_db():
     db = getattr(g, '_database', None)
     if db is None: 
         db = g._database = sqlite3.connect(DATABASE, isolation_level=None)
     db.row_factory = sqlite3.Row
     return db
+
+def init_db():
+    db = get_db()
+    with current_app.open_resource('schema.sql') as f:
+        db.executescript(f.read().decode('utf8'))
 
 def read_db(query, params=None):
     if params is not None: 

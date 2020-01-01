@@ -6,7 +6,7 @@ from flask import g
 from routes import index, form, paste, login, logout
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = os.urandom(16)
+app.config["SECRET_KEY"] = os.urandom(16) #this isn't how you should actually create a secret key
 
 @app.teardown_appcontext
 def close_connection(exception):

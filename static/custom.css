@@ -1,0 +1,12 @@
+#header {
+    height: 50em; 
+    background-color: gray;  
+}
+
+#header h1 a {
+    color: white; 
+}
+
+body {
+    background: black; 
+}
